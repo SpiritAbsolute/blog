@@ -3,6 +3,7 @@
 $config = [
     'id' => 'spirit',
     'defaultRoute' => 'main/default/index',
+    'name' => 'Personal blog',
     'components' => [
         'request' => [
             'cookieValidationKey' => '',
