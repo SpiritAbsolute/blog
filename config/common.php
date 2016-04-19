@@ -7,6 +7,7 @@ $params = ArrayHelper::merge(
 );
 
 return [
+    'name' => 'Self-development',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
@@ -37,6 +38,14 @@ return [
         ],
         'log' => [
             'class' => 'yii\log\Dispatcher',
+        ],
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'forceTranslation' => true,
+                ],
+            ],
         ],
     ],
     'modules' => [

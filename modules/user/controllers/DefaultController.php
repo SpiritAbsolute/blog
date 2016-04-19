@@ -8,7 +8,7 @@ use yii\filters\VerbFilter;
 use app\modules\user\models\LoginForm;
 use app\modules\user\models\EmailConfirmForm;
 use app\modules\user\models\PasswordResetRequestForm;
-use app\modules\user\models\ResetPasswordForm;
+use app\modules\user\models\PasswordResetForm;
 use app\modules\user\models\SignupForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -133,7 +133,7 @@ class DefaultController extends Controller
     {
         try
         {
-            $model = new ResetPasswordForm($token);
+            $model = new PasswordResetForm($token);
         }
         catch (InvalidParamException $e)
         {

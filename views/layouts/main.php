@@ -37,14 +37,14 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => array_filter([
-            ['label' => 'Home', 'url' => ['/main/default/index']],
-            ['label' => 'Contact', 'url' => ['/contact/default/index']],
+            ['label' => Yii::t('app', 'NAV_HOME'), 'url' => ['/main/default/index']],
+            ['label' => Yii::t('app', 'NAW_CONTACT'), 'url' => ['/contact/default/index']],
             Yii::$app->user->isGuest ?
-                ['label' => 'Sign Up', 'url' => ['/user/default/signup']] :
+                ['label' => Yii::t('app', 'NAV_SIGNUP'), 'url' => ['/user/default/signup']] :
                 false,
             Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/user/default/login']] :
-                ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                ['label' => Yii::t('app', 'NAV_LOGIN'), 'url' => ['/user/default/login']] :
+                ['label' => Yii::t('app', 'NAV_LOGOUT'),
                     'url' => ['/user/default/logout'],
                     'linkOptions' => ['data-method' => 'post']],
         ]),
