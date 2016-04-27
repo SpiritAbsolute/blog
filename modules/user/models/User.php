@@ -26,178 +26,187 @@ use yii\base\NotSupportedException;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_BLOCKED = 0;
-    const STATUS_ACTIVE = 1;
-    const STATUS_WAIT = 2;
+	const SCENARIO_PROFILE = 'profile';
 
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
+	const STATUS_BLOCKED = 0;
+	const STATUS_ACTIVE = 1;
+	const STATUS_WAIT = 2;
 
-    public static function tableName()
-    {
-        return '{{%user}}';
-    }
+	public function behaviors()
+	{
+		return [
+			TimestampBehavior::className(),
+		];
+	}
 
-    public function rules()
-    {
-        return [
-            ['username', 'required'],
-            ['username', 'match', 'pattern' => '#^[\w_-]+$#i'],
-            ['username', 'unique', 'targetClass' => self::className(),
-                'message' => Yii::t('app', 'ERROR_USERNAME_EXISTS')],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+	public static function tableName()
+	{
+		return '{{%user}}';
+	}
 
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'unique', 'targetClass' => self::className(),
-                'message' => Yii::t('app', 'ERROR_EMAIL_EXISTS')],
-            ['email', 'string', 'max' => 255],
+	public function rules()
+	{
+		return [
+			['username', 'required'],
+			['username', 'match', 'pattern' => '#^[\w_-]+$#i'],
+			['username', 'unique', 'targetClass' => self::className(),
+				'message' => Yii::t('app', 'ERROR_USERNAME_EXISTS')],
+			['username', 'string', 'min' => 2, 'max' => 255],
 
-            ['status', 'integer'],
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => array_keys(self::getStatusesArray())],
-        ];
-    }
+			['email', 'required'],
+			['email', 'email'],
+			['email', 'unique', 'targetClass' => self::className(),
+				'message' => Yii::t('app', 'ERROR_EMAIL_EXISTS')],
+			['email', 'string', 'max' => 255],
 
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'created_at' => Yii::t('app', 'USER_CREATED'),
-            'updated_at' => Yii::t('app', 'USER_UPDATED'),
-            'logged_at' => Yii::t('app', 'USER_LOGGED'),
-            'username' => Yii::t('app', 'USER_USERNAME'),
-            'email' => Yii::t('app', 'USER_EMAIL'),
-            'status' => Yii::t('app', 'USER_STATUS'),
-            'avatar' => Yii::t('app', 'USER_AVATAR'),
-        ];
-    }
+			['status', 'integer'],
+			['status', 'default', 'value' => self::STATUS_ACTIVE],
+			['status', 'in', 'range' => array_keys(self::getStatusesArray())],
+		];
+	}
 
-    public function getStatusName()
-    {
-        return ArrayHelper::getValue(self::getStatusesArray(), $this->status);
-    }
+	public function scenarios()
+	{
+		return ArrayHelper::merge(parent::scenarios(), [
+			self::SCENARIO_PROFILE => ['email'],
+		]);
+	}
 
-    public static function getStatusesArray()
-    {
-        return [
-            self::STATUS_BLOCKED => Yii::t('app', 'USER_STATUS_BLOCKED'),
-            self::STATUS_ACTIVE => Yii::t('app', 'USER_STATUS_ACTIVE'),
-            self::STATUS_WAIT => Yii::t('app', 'USER_STATUS_WAIT'),
-        ];
-    }
+	public function attributeLabels()
+	{
+		return [
+			'id' => 'ID',
+			'created_at' => Yii::t('app', 'USER_CREATED'),
+			'updated_at' => Yii::t('app', 'USER_UPDATED'),
+			'logged_at' => Yii::t('app', 'USER_LOGGED'),
+			'username' => Yii::t('app', 'USER_USERNAME'),
+			'email' => Yii::t('app', 'USER_EMAIL'),
+			'status' => Yii::t('app', 'USER_STATUS'),
+			'avatar' => Yii::t('app', 'USER_AVATAR'),
+		];
+	}
 
-    public static function findIdentity($id)
-    {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
-    }
+	public function getStatusName()
+	{
+		return ArrayHelper::getValue(self::getStatusesArray(), $this->status);
+	}
 
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        throw new NotSupportedException('findIdentityByAccessToken is not implemented.');
-    }
+	public static function getStatusesArray()
+	{
+		return [
+			self::STATUS_BLOCKED => Yii::t('app', 'USER_STATUS_BLOCKED'),
+			self::STATUS_ACTIVE => Yii::t('app', 'USER_STATUS_ACTIVE'),
+			self::STATUS_WAIT => Yii::t('app', 'USER_STATUS_WAIT'),
+		];
+	}
 
-    public function getId()
-    {
-        return $this->getPrimaryKey();
-    }
+	public static function findIdentity($id)
+	{
+		return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+	}
 
-    public function getAuthKey()
-    {
-        return $this->auth_key;
-    }
+	public static function findIdentityByAccessToken($token, $type = null)
+	{
+		throw new NotSupportedException('findIdentityByAccessToken is not implemented.');
+	}
 
-    public function validateAuthKey($authKey)
-    {
-        return $this->getAuthKey() === $authKey;
-    }
+	public function getId()
+	{
+		return $this->getPrimaryKey();
+	}
 
-    public static function findByUsername($username)
-    {
-        return static::findOne(['username' => $username]);
-    }
+	public function getAuthKey()
+	{
+		return $this->auth_key;
+	}
 
-    public function validatePassword($password)
-    {
-        return Yii::$app->security->validatePassword($password, $this->password_hash);
-    }
+	public function validateAuthKey($authKey)
+	{
+		return $this->getAuthKey() === $authKey;
+	}
 
-    public function setPassword($password)
-    {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
-    }
+	public static function findByUsername($username)
+	{
+		return static::findOne(['username' => $username]);
+	}
 
-    public function generateAuthKey()
-    {
-        $this->auth_key = Yii::$app->security->generateRandomString();
-    }
+	public function validatePassword($password)
+	{
+		return Yii::$app->security->validatePassword($password, $this->password_hash);
+	}
 
-    public static function findByPasswordResetToken($token)
-    {
-        if (!static::isPasswordResetTokenValid($token))
-        {
-            return null;
-        }
-        return static::findOne([
-            'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
-        ]);
-    }
+	public function setPassword($password)
+	{
+		$this->password_hash = Yii::$app->security->generatePasswordHash($password);
+	}
 
-    public static function isPasswordResetTokenValid($token)
-    {
-        if (empty($token))
-        {
-            return false;
-        }
-        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
-        $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
-        return $timestamp + $expire >= time();
-    }
+	public function generateAuthKey()
+	{
+		$this->auth_key = Yii::$app->security->generateRandomString();
+	}
 
-    public function generatePasswordResetToken()
-    {
-        $this->password_reset_token = Yii::$app->security->generateRandomString().'_'.time();
-    }
+	public static function findByPasswordResetToken($token)
+	{
+		if (!static::isPasswordResetTokenValid($token))
+		{
+			return null;
+		}
+		return static::findOne([
+			'password_reset_token' => $token,
+			'status' => self::STATUS_ACTIVE,
+		]);
+	}
 
-    public function removePasswordResetToken()
-    {
-        $this->password_reset_token = null;
-    }
+	public static function isPasswordResetTokenValid($token)
+	{
+		if (empty($token))
+		{
+			return false;
+		}
+		$expire = Yii::$app->params['user.passwordResetTokenExpire'];
+		$parts = explode('_', $token);
+		$timestamp = (int) end($parts);
+		return $timestamp + $expire >= time();
+	}
 
-    public static function findByEmailConfirmToken($emailConfirmToken)
-    {
-        return static::findOne([
-            'email_confirm_token' => $emailConfirmToken,
-            'status' => self::STATUS_WAIT
-        ]);
-    }
+	public function generatePasswordResetToken()
+	{
+		$this->password_reset_token = Yii::$app->security->generateRandomString().'_'.time();
+	}
 
-    public function generateEmailConfirmToken()
-    {
-        $this->email_confirm_token = Yii::$app->security->generateRandomString();
-    }
+	public function removePasswordResetToken()
+	{
+		$this->password_reset_token = null;
+	}
 
-    public function removeEmailConfirmToken()
-    {
-        $this->email_confirm_token = null;
-    }
+	public static function findByEmailConfirmToken($emailConfirmToken)
+	{
+		return static::findOne([
+			'email_confirm_token' => $emailConfirmToken,
+			'status' => self::STATUS_WAIT
+		]);
+	}
 
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert))
-        {
-            if ($insert)
-            {
-                $this->generateAuthKey();
-            }
-            return true;
-        }
-        return false;
-    }
+	public function generateEmailConfirmToken()
+	{
+		$this->email_confirm_token = Yii::$app->security->generateRandomString();
+	}
+
+	public function removeEmailConfirmToken()
+	{
+		$this->email_confirm_token = null;
+	}
+
+	public function beforeSave($insert)
+	{
+		if (parent::beforeSave($insert))
+		{
+			if ($insert)
+			{
+				$this->generateAuthKey();
+			}
+			return true;
+		}
+		return false;
+	}
 }
