@@ -5,11 +5,15 @@ return [
 	'NAV_SIGNUP' => 'Signup',
 	'NAV_LOGIN' => 'Login',
 	'NAV_LOGOUT' => 'Logout',
+	'NAV_ADMIN' => 'Manage',
 
 	'BUTTON_SEND' => 'Send',
 	'BUTTON_SAVE' => 'Save',
+	'BUTTON_CREATE' => 'Create',
 	'BUTTON_UPDATE' => 'Update',
 	'BUTTON_DELETE' => 'Delete',
+
+	'CONFIRM_DELETE' => 'Are you sure you want to delete this item?',
 
 	'HELLO {username}' => 'Hello, {username}!',
 	'FOLLOW_TO_RESET_PASSWORD' => 'Follow the link below to reset your password:',
@@ -67,4 +71,15 @@ return [
 	'ERROR_PROFILE_BLOCKED' => 'Your profile is blocked.',
 	'ERROR_PROFILE_NOT_CONFIRMED' => 'Your profile is not confirmed.',
 	'ERROR_WRONG_CURRENT_PASSWORD' => 'Wrong current password.',
+
+	'ADMIN_USERS' => 'Users',
+	'ADMIN_USERS_ADD' => 'Create user',
+
+	'TITLE_CREATE' => 'Create',
+	'TITLE_UPDATE' => 'Update',
+
+	'ADMIN' => 'Control panel',
+
+	'DATE_FROM' => 'Date from',
+	'DATE_TO' => 'Date to',
 ];

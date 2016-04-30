@@ -6,11 +6,15 @@ return [
 	'NAV_LOGIN' => 'Вход',
 	'NAV_PROFILE' => 'Профиль',
 	'NAV_LOGOUT' => 'Выход',
+	'NAV_ADMIN' => 'Управление',
 
 	'BUTTON_SEND' => 'Отправить',
 	'BUTTON_SAVE' => 'Сохранить',
+	'BUTTON_CREATE' => 'Добавить',
 	'BUTTON_UPDATE' => 'Редактировать',
 	'BUTTON_DELETE' => 'Удалить',
+
+	'CONFIRM_DELETE' => 'Удалить запись?',
 
 	'HELLO {username}' => 'Здравствуйте, {username}!',
 	'FOLLOW_TO_RESET_PASSWORD' => 'Для смены пароля пройдите по ссылке:',
@@ -67,4 +71,15 @@ return [
 	'ERROR_PROFILE_BLOCKED' => 'Ваш аккаунт заблокирован.',
 	'ERROR_PROFILE_NOT_CONFIRMED' => 'Ваш аккаунт не подтвержден.',
 	'ERROR_WRONG_CURRENT_PASSWORD' => 'Неверный текущий пароль.',
+
+	'ADMIN_USERS' => 'Пользователи',
+	'ADMIN_USERS_ADD' => 'Добавить пользователя',
+
+	'TITLE_CREATE' => 'Добавление',
+	'TITLE_UPDATE' => 'Редактирование',
+
+	'ADMIN' => 'Панель управления',
+
+	'DATE_FROM' => 'Дата с',
+	'DATE_TO' => 'Дата по',
 ];
