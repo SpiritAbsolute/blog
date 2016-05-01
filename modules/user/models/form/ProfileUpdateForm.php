@@ -1,6 +1,7 @@
 <?php
-namespace app\modules\user\models;
+namespace app\modules\user\models\form;
 
+use app\modules\user\models\User;
 use yii\base\Model;
 use yii\db\ActiveQuery;
 use Yii;

@@ -5,11 +5,11 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\modules\user\models\LoginForm;
-use app\modules\user\models\EmailConfirmForm;
-use app\modules\user\models\PasswordResetRequestForm;
-use app\modules\user\models\PasswordResetForm;
-use app\modules\user\models\SignupForm;
+use app\modules\user\models\form\LoginForm;
+use app\modules\user\models\form\EmailConfirmForm;
+use app\modules\user\models\form\PasswordResetRequestForm;
+use app\modules\user\models\form\PasswordResetForm;
+use app\modules\user\models\form\SignupForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 

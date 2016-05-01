@@ -4,7 +4,7 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\user\models\PasswordChangeForm */
+/* @var $model \app\modules\user\models\form\PasswordChangeForm */
 
 $this->title = Yii::t('app', 'TITLE_PASSWORD_CHANGE');
 $this->params['breadcrumbs'][] = [

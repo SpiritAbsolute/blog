@@ -4,7 +4,7 @@ namespace tests\codeception\unit\models;
 
 use Yii;
 use yii\codeception\TestCase;
-use app\modules\user\models\LoginForm;
+use app\modules\user\models\form\LoginForm;
 use Codeception\Specify;
 
 class LoginFormTest extends TestCase
@@ -32,7 +32,7 @@ class LoginFormTest extends TestCase
 
     public function testLoginWrongPassword()
     {
-        $model = new \app\modules\user\models\LoginForm([
+        $model = new \app\modules\user\models\form\LoginForm([
             'username' => 'demo',
             'password' => 'wrong_password',
         ]);
@@ -46,7 +46,7 @@ class LoginFormTest extends TestCase
 
     public function testLoginCorrect()
     {
-        $model = new \app\modules\user\models\LoginForm([
+        $model = new \app\modules\user\models\form\LoginForm([
             'username' => 'demo',
             'password' => 'demo',
         ]);

@@ -2,6 +2,8 @@
 namespace app\modules\admin;
 
 use yii\filters\AccessControl;
+use Yii;
+use yii\console\Application as ConsoleApplication;
 
 class Module extends \yii\base\Module
 {
@@ -22,5 +24,15 @@ class Module extends \yii\base\Module
 				],
 			],
 		];
+	}
+
+	public function init()
+	{
+		parent::init();
+
+		if (Yii::$app instanceof ConsoleApplication)
+		{
+			$this->controllerNamespace = 'app\modules\admin\commands';
+		}
 	}
 }
