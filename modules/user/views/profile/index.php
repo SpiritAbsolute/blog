@@ -2,19 +2,20 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\modules\user\Module;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\user\models\User */
 
-$this->title = Yii::t('app', 'TITLE_PROFILE');
+$this->title = Module::t('module', 'TITLE_PROFILE');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-profile-index">
 
 	<p>
-		<?= Html::a(Yii::t('app', 'BUTTON_UPDATE'), ['update'],
+		<?= Html::a(Module::t('module', 'BUTTON_UPDATE'), ['update'],
 			['class' => 'btn btn-primary']) ?>
-		<?= Html::a(Yii::t('app', 'LINK_PASSWORD_CHANGE'), ['password-change'],
+		<?= Html::a(Module::t('module', 'LINK_PASSWORD_CHANGE'), ['password-change'],
 			['class' => 'btn btn-primary']) ?>
 	</p>
 

@@ -5,6 +5,7 @@ namespace app\modules\admin\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use app\modules\admin\Module;
 
 class UserSearch extends Model
 {
@@ -28,13 +29,13 @@ class UserSearch extends Model
 	{
 		return [
 			'id' => 'ID',
-			'created_at' => Yii::t('app', 'USER_CREATED'),
-			'updated_at' => Yii::t('app', 'USER_UPDATED'),
-			'username' => Yii::t('app', 'USER_USERNAME'),
-			'email' => Yii::t('app', 'USER_EMAIL'),
-			'status' => Yii::t('app', 'USER_STATUS'),
-			'date_from' => Yii::t('app', 'DATE_FROM'),
-			'date_to' => Yii::t('app', 'DATE_TO'),
+			'created_at' => Module::t('module', 'USER_CREATED'),
+			'updated_at' => Module::t('module', 'USER_UPDATED'),
+			'username' => Module::t('module', 'USER_USERNAME'),
+			'email' => Module::t('module', 'USER_EMAIL'),
+			'status' => Module::t('module', 'USER_STATUS'),
+			'date_from' => Module::t('module', 'USER_DATE_FROM'),
+			'date_to' => Module::t('module', 'USER_DATE_TO'),
 		];
 	}
 

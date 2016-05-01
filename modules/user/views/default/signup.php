@@ -7,12 +7,13 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
+use app\modules\user\Module;
 
-$this->title = Yii::t('app', 'TITLE_SIGNUP');
+$this->title = Module::t('module', 'TITLE_SIGNUP');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-default-signup">
-    <p><?=Yii::t('app', 'PLEASE_FILL_FOR_SIGNUP')?></p>
+    <p><?=Module::t('module', 'PLEASE_FILL_FOR_SIGNUP')?></p>
 
     <div class="row">
         <div class="col-lg-5">
@@ -33,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app', 'USER_BUTTON_SIGNUP'),
+                    <?= Html::submitButton(Module::t('module', 'BUTTON_SIGNUP'),
                         ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>
 

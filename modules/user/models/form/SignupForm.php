@@ -4,6 +4,7 @@ namespace app\modules\user\models\form;
 use yii\base\Model;
 use app\modules\user\models\User;
 use yii;
+use app\modules\user\Module;
 
 class SignupForm extends Model
 {
@@ -38,10 +39,10 @@ class SignupForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'username' => Yii::t('app', 'USER_USERNAME'),
-			'email' => Yii::t('app', 'USER_EMAIL'),
-			'password' => Yii::t('app', 'USER_PASSWORD'),
-			'verifyCode' => Yii::t('app', 'USER_VERIFY_CODE'),
+			'username' => Module::t('module', 'USER_USERNAME'),
+			'email' => Module::t('module', 'USER_EMAIL'),
+			'password' => Module::t('module', 'USER_PASSWORD'),
+			'verifyCode' => Module::t('module', 'USER_VERIFY_CODE'),
 		];
 	}
 

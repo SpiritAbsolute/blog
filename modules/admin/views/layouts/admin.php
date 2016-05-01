@@ -6,6 +6,7 @@ use yii\bootstrap\Nav;
 use app\modules\admin\assets\ModuleAsset;
 use app\components\widgets\Alert;
 use yii\widgets\Breadcrumbs;
+use app\modules\admin\Module;
 
 $bundle = ModuleAsset::register($this);
 $this->registerJsFile($bundle->baseUrl.'/js/script.js', ['depends'=>'yii\web\JqueryAsset']);
@@ -34,7 +35,7 @@ $this->registerCssFile($bundle->baseUrl.'/css/style.css', ['depends'=>'app\asset
 					'options' => ['class' => 'nav nav-pills nav-stacked'],
 					'activateParents' => true,
 					'items' =>  [
-						['label' => Yii::t('app', 'ADMIN_USERS'),
+						['label' => Module::t('module', 'ADMIN_USERS'),
 							'url' => ['/admin/user/index']],
 
 					],

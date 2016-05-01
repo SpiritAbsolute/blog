@@ -5,6 +5,7 @@ use app\modules\user\models\User;
 use yii\base\Model;
 use yii\db\ActiveQuery;
 use Yii;
+use app\modules\user\Module;
 
 class ProfileUpdateForm extends Model
 {
@@ -36,7 +37,7 @@ class ProfileUpdateForm extends Model
 				'email',
 				'unique',
 				'targetClass' => User::className(),
-				'message' => Yii::t('app', 'ERROR_EMAIL_EXISTS'),
+				'message' => Module::t('module', 'ERROR_EMAIL_EXISTS'),
 				'filter' => function (ActiveQuery $query) {
 					$query->andWhere(['<>', 'id', $this->_user->id]);
 				},

@@ -6,12 +6,13 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use app\modules\user\Module;
 
-$this->title = Yii::t('app', 'TITLE_PASSWORD_RESET');
+$this->title = Module::t('module', 'TITLE_PASSWORD_RESET');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-default-password-reset-request">
-    <p><?= Yii::t('app', 'PLEASE_FILL_FOR_RESET_REQUEST') ?></p>
+    <p><?= Module::t('module', 'PLEASE_FILL_FOR_RESET_REQUEST') ?></p>
 
     <div class="row">
         <div class="col-lg-5">
@@ -20,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app', 'BUTTON_SEND'),
+                    <?= Html::submitButton(Module::t('module', 'BUTTON_SEND'),
                         ['class' => 'btn btn-primary']) ?>
                 </div>
 

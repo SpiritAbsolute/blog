@@ -7,20 +7,21 @@ use app\components\grid\ActionColumn;
 use app\components\grid\SetColumn;
 use app\components\grid\LinkColumn;
 use kartik\date\DatePicker;
+use app\modules\admin\Module;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\admin\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'ADMIN_USERS');
+$this->title = Module::t('module', 'ADMIN_USERS');
 $this->params['breadcrumbs'][] = ['label' =>
-	Yii::t('app', 'ADMIN'), 'url' => ['default/index']];
+	Module::t('module', 'ADMIN'), 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 
 	<p>
-		<?= Html::a(Yii::t('app', 'BUTTON_CREATE'), ['create'],
+		<?= Html::a(Module::t('module', 'BUTTON_CREATE'), ['create'],
 			['class' => 'btn btn-success']) ?>
 	</p>
 

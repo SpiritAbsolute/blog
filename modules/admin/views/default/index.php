@@ -1,8 +1,9 @@
 <?php
+use app\modules\admin\Module;
 
 /* @var $this yii\web\View */
 
-$this->title = Yii::t('app', 'ADMIN');
+$this->title = Module::t('module', 'ADMIN');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

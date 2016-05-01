@@ -4,6 +4,7 @@ namespace app\modules\user\models\form;
 use Yii;
 use yii\base\Model;
 use app\modules\user\models\User;
+use app\modules\user\Module;
 
 /**
  * Password reset request form
@@ -32,7 +33,7 @@ class PasswordResetRequestForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'email' => Yii::t('app', 'USER_EMAIL'),
+			'email' => Module::t('module', 'USER_EMAIL'),
 		];
 	}
 

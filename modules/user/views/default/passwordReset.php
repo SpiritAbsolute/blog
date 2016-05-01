@@ -6,13 +6,14 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use app\modules\user\Module;
 
-$this->title = Yii::t('app', 'TITLE_PASSWORD_CHANGE');
+$this->title = Module::t('module', 'TITLE_PASSWORD_CHANGE');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-default-password-reset">
 
-    <p><?= Yii::t('app', 'PLEASE_FILL_FOR_RESET') ?></p>
+    <p><?= Module::t('module', 'PLEASE_FILL_FOR_RESET') ?></p>
 
     <div class="row">
         <div class="col-lg-5">
@@ -22,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ->passwordInput(['autofocus' => true]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app', 'BUTTON_SAVE'),
+                    <?= Html::submitButton(Module::t('module', 'BUTTON_SAVE'),
                         ['class' => 'btn btn-primary']) ?>
                 </div>
 

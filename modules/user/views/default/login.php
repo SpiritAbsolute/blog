@@ -6,12 +6,13 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use app\modules\user\Module;
 
-$this->title = Yii::t('app', 'TITLE_LOGIN');
+$this->title = Module::t('module', 'TITLE_LOGIN');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-default-login">
-    <p><?=Yii::t('app', 'PLEASE_FILL_FOR_LOGIN')?></p>
+    <p><?=Module::t('module', 'PLEASE_FILL_FOR_LOGIN')?></p>
 
     <div class="row">
         <div class="col-lg-5">
@@ -24,12 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                 <div style="color:#999;margin:1em 0">
-                    <?= Html::a(Yii::t('app', 'LINK_PASSWORD_RESET'),
+                    <?= Html::a(Module::t('module', 'LINK_PASSWORD_RESET'),
                         ['password-reset-request']) ?>
                 </div>
 
                 <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app', 'USER_BUTTON_LOGIN'),
+                    <?= Html::submitButton(Module::t('module', 'BUTTON_LOGIN'),
                         ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
 
