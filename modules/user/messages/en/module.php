@@ -51,4 +51,13 @@ return [
 	'ERROR_PROFILE_BLOCKED' => 'Your profile is blocked.',
 	'ERROR_PROFILE_NOT_CONFIRMED' => 'Your profile is not confirmed.',
 	'ERROR_WRONG_CURRENT_PASSWORD' => 'Wrong current password.',
+	'ERROR_TOKEN_IS_SENT' => 'Mail is already send.',
+
+	'FLASH_EMAIL_CONFIRM_REQUEST' => 'Please confirm your Email.',
+	'FLASH_EMAIL_CONFIRM_SUCCESS' => 'Thanks! Your Email is confirmed.',
+	'FLASH_EMAIL_CONFIRM_ERROR' => 'Error! Email confirm is not sent.',
+	'FLASH_PASSWORD_RESET_REQUEST' => 'Follow the link on mail to reset your password.',
+	'FLASH_PASSWORD_RESET_SUCCESS' => 'Thanks! Your passwords is changed.',
+	'FLASH_PASSWORD_RESET_ERROR' => 'Error! Email confirm is not sent.',
+	'FLASH_PASSWORD_CHANGE_SUCCESS' => 'Your passwords is changed.',
 ];

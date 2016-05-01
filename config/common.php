@@ -9,8 +9,8 @@ $params = ArrayHelper::merge(
 return [
 	'name' => 'Self-development',
 	'basePath' => dirname(__DIR__),
-	'bootstrap' => ['
-		log',
+	'bootstrap' => [
+		'log',
 		'app\modules\admin\Bootstrap',
 		'app\modules\main\Bootstrap',
 		'app\modules\user\Bootstrap',

@@ -51,4 +51,13 @@ return [
 	'ERROR_PROFILE_BLOCKED' => 'Ваш аккаунт заблокирован.',
 	'ERROR_PROFILE_NOT_CONFIRMED' => 'Ваш аккаунт не подтвержден.',
 	'ERROR_WRONG_CURRENT_PASSWORD' => 'Неверный текущий пароль.',
+	'ERROR_TOKEN_IS_SENT' => 'Токен уже отправлен.',
+
+	'FLASH_EMAIL_CONFIRM_REQUEST' => 'Подтвердите ваш электронный адрес.',
+	'FLASH_EMAIL_CONFIRM_SUCCESS' => 'Спасибо! Ваш Email успешно подтверждён.',
+	'FLASH_EMAIL_CONFIRM_ERROR' => 'Ошибка подтверждения Email.',
+	'FLASH_PASSWORD_RESET_REQUEST' => 'Спасибо! На ваш Email было отправлено письмо со ссылкой на восстановление пароля.',
+	'FLASH_PASSWORD_RESET_SUCCESS' => 'Спасибо! Пароль успешно изменён.',
+	'FLASH_PASSWORD_RESET_ERROR' => 'Извините. У нас возникли проблемы с отправкой.',
+	'FLASH_PASSWORD_CHANGE_SUCCESS' => 'Пароль успешно изменён.',
 ];
