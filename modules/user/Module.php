@@ -8,6 +8,8 @@ class Module extends \yii\base\Module
 {
 	public $controllerNamespace = 'app\modules\user\controllers';
 
+	public $emailConfirmTokenExpire = 259200;
+
 	public $passwordResetTokenExpire = 3600;
 
 	public function init()

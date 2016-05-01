@@ -8,6 +8,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
 use yii\base\NotSupportedException;
 use app\modules\user\Module;
+use app\modules\user\models\query\UserQuery;
 
 /**
  * This is the model class for table "{{%user}}".
@@ -85,6 +86,14 @@ class User extends ActiveRecord implements IdentityInterface
 			'status' => Module::t('module', 'USER_STATUS'),
 			'avatar' => Module::t('module', 'USER_AVATAR'),
 		];
+	}
+
+	/**
+	 * @return UserQuery
+	 */
+	public static function find()
+	{
+		return Yii::createObject(UserQuery::className(), [get_called_class()]);
 	}
 
 	public function getStatusName()
