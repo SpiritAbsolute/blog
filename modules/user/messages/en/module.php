@@ -16,6 +16,8 @@ return [
 	'USER_NEW_PASSWORD' => 'New password',
 	'USER_REPEAT_PASSWORD' => 'Repeat new password',
 	'USER_VERIFY_CODE' => 'Verify code',
+	'USER_DATE_FROM' => 'Date from',
+	'USER_DATE_TO' => 'Date to',
 
 	'TITLE_LOGIN' => 'Login',
 	'TITLE_PASSWORD_CHANGE' => 'Change password',
@@ -23,6 +25,8 @@ return [
 	'TITLE_SIGNUP' => 'Signup',
 	'TITLE_PROFILE' => 'Profile',
 	'TITLE_PROFILE_UPDATE' => 'Update',
+	'TITLE_CREATE' => 'Create',
+	'TITLE_UPDATE' => 'Update',
 
 	'PLEASE_FILL_FOR_LOGIN' => 'Please fill out the following fields to login:',
 	'PLEASE_FILL_FOR_RESET' => 'Please choose your new password:',
@@ -38,6 +42,8 @@ return [
 	'BUTTON_SAVE' => 'Save',
 	'BUTTON_SEND' => 'Send',
 	'BUTTON_UPDATE' => 'Update',
+	'BUTTON_CREATE' => 'Create',
+	'BUTTON_DELETE' => 'Delete',
 
 	'HELLO {username}' => 'Hello, {username}!',
 	'FOLLOW_TO_RESET_PASSWORD' => 'Follow the link below to reset your password:',
@@ -60,4 +66,8 @@ return [
 	'FLASH_PASSWORD_RESET_SUCCESS' => 'Thanks! Your passwords is changed.',
 	'FLASH_PASSWORD_RESET_ERROR' => 'Error! Email confirm is not sent.',
 	'FLASH_PASSWORD_CHANGE_SUCCESS' => 'Your passwords is changed.',
+
+	'CONFIRM_DELETE' => 'Are you sure you want to delete this item?',
+
+	'ADMIN_USERS' => 'Users',
 ];

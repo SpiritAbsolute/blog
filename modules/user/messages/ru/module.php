@@ -16,6 +16,8 @@ return [
 	'USER_NEW_PASSWORD' => 'Новый пароль',
 	'USER_REPEAT_PASSWORD' => 'Повторите пароль',
 	'USER_VERIFY_CODE' => 'Код',
+	'USER_DATE_FROM' => 'Дата с',
+	'USER_DATE_TO' => 'Дата по',
 
 	'TITLE_LOGIN' => 'Вход',
 	'TITLE_PASSWORD_CHANGE' => 'Смена пароля',
@@ -23,6 +25,8 @@ return [
 	'TITLE_SIGNUP' => 'Регистрация',
 	'TITLE_PROFILE' => 'Профиль',
 	'TITLE_PROFILE_UPDATE' => 'Изменение профиля',
+	'TITLE_CREATE' => 'Добавление',
+	'TITLE_UPDATE' => 'Редактирование',
 
 	'PLEASE_FILL_FOR_LOGIN' => 'Для входа на сайт введите данные своей учётной записи:',
 	'PLEASE_FILL_FOR_RESET' => 'Введите новый пароль:',
@@ -38,6 +42,8 @@ return [
 	'BUTTON_SAVE' => 'Сохранить',
 	'BUTTON_SEND' => 'Отправить',
 	'BUTTON_UPDATE' => 'Редактировать',
+	'BUTTON_CREATE' => 'Добавить',
+	'BUTTON_DELETE' => 'Удалить',
 
 	'HELLO {username}' => 'Здравствуйте, {username}!',
 	'FOLLOW_TO_RESET_PASSWORD' => 'Для смены пароля пройдите по ссылке:',
@@ -60,4 +66,8 @@ return [
 	'FLASH_PASSWORD_RESET_SUCCESS' => 'Спасибо! Пароль успешно изменён.',
 	'FLASH_PASSWORD_RESET_ERROR' => 'Извините. У нас возникли проблемы с отправкой.',
 	'FLASH_PASSWORD_CHANGE_SUCCESS' => 'Пароль успешно изменён.',
+
+	'CONFIRM_DELETE' => 'Удалить запись?',
+
+	'ADMIN_USERS' => 'Пользователи',
 ];

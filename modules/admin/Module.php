@@ -7,8 +7,6 @@ use yii\console\Application as ConsoleApplication;
 
 class Module extends \yii\base\Module
 {
-	public $layout = 'admin';
-
 	public $controllerNamespace = 'app\modules\admin\controllers';
 
 	public function behaviors()
@@ -24,16 +22,6 @@ class Module extends \yii\base\Module
 				],
 			],
 		];
-	}
-
-	public function init()
-	{
-		parent::init();
-
-		if (Yii::$app instanceof ConsoleApplication)
-		{
-			$this->controllerNamespace = 'app\modules\admin\commands';
-		}
 	}
 
 	public static function t($category, $message, $params = [], $language = null)

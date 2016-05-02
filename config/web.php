@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__.'/debug-local.php');
+
 $config = [
 	'id' => 'spirit',
 	'defaultRoute' => 'main/default/index',
@@ -18,6 +20,27 @@ $config = [
 		],
 		'log' => [
 			'traceLevel' => YII_DEBUG ? 3 : 0,
+		],
+	],
+	'modules' => [
+		'admin' => [
+			'class' => 'app\modules\admin\Module',
+			'layout' => '@app/views/layouts/admin',
+			'modules' => [
+				'user' => [
+					'class' => 'app\modules\user\Module',
+					'controllerNamespace' => 'app\modules\user\controllers\backend',
+					'viewPath' => '@app/modules/user/views/backend',
+				],
+			],
+		],
+		'main' => [
+			'class' => 'app\modules\main\Module',
+		],
+		'user' => [
+			'class' => 'app\modules\user\Module',
+			'controllerNamespace' => 'app\modules\user\controllers\frontend',
+			'viewPath' => '@app/modules/user/views/frontend',
 		],
 	],
 ];

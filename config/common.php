@@ -24,12 +24,26 @@ return [
 			'enablePrettyUrl' => true,
 			'showScriptName' => false,
 			'rules' => [
+				[
+					'class' => 'yii\web\GroupUrlRule',
+					'prefix' => 'admin',
+					'routePrefix' => 'admin',
+					'rules' => [
+						'' => 'default/index',
+						'<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
+						'<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/<_c>/<_a>',
+						'<_m:[\w\-]+>' => '<_m>/default/index',
+						'<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
+					],
+				],
+
 				'' => 'main/default/index',
 				'contact' => 'main/contact/index',
 				'<_a:error>' => 'main/default/<_a>',
 				'<_a:(login|logout|signup|email-confirm|password-request-reset|password-reset)>'
 					=> 'user/default/<_a>',
 
+				'<_m:[\w\-]+>/<_c:[\w\-]+>/<_a:[\w-]+>' => '<_m>/<_c>/<_a>',
 				'<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
 				'<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/<_c>/<_a>',
 				'<_m:[\w\-]+>' => '<_m>/default/index',
@@ -54,16 +68,6 @@ return [
 			],
 		],
 	],
-	'modules' => [
-		'main' => [
-			'class' => 'app\modules\main\Module',
-		],
-		'user' => [
-			'class' => 'app\modules\user\Module',
-		],
-		'admin' => [
-			'class' => 'app\modules\admin\Module',
-		],
-	],
+	'modules' => [],
 	'params' => $params,
 ];
