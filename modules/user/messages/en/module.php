@@ -18,6 +18,7 @@ return [
 	'USER_VERIFY_CODE' => 'Verify code',
 	'USER_DATE_FROM' => 'Date from',
 	'USER_DATE_TO' => 'Date to',
+	'USER_ROLE' => 'Role',
 
 	'TITLE_LOGIN' => 'Login',
 	'TITLE_PASSWORD_CHANGE' => 'Change password',

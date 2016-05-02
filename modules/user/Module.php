@@ -2,11 +2,10 @@
 namespace app\modules\user;
 
 use Yii;
-use yii\console\Application as ConsoleApplication;
 
 class Module extends \yii\base\Module
 {
-	public $controllerNamespace = 'app\modules\user\controllers';
+	public $defaultRole = 'user';
 
 	public $emailConfirmTokenExpire = 259200;
 

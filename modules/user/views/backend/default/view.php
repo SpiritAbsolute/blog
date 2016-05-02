@@ -36,6 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
 				'attribute' => 'status',
 				'value' => $model->getStatusName(),
 			],
+			[
+				'attribute' => 'role',
+				'value' => ($role = Yii::$app->authManager->getRole($model->role)) ?
+					$role->description : $model->role,
+			],
 		],
 	]) ?>
 

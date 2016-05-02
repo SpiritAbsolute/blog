@@ -25,6 +25,7 @@ use app\modules\user\models\query\UserQuery;
  * @property string $email
  * @property integer $status
  * @property string $avatar
+ * @property string $role
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -64,6 +65,8 @@ class User extends ActiveRecord implements IdentityInterface
 			['status', 'integer'],
 			['status', 'default', 'value' => self::STATUS_ACTIVE],
 			['status', 'in', 'range' => array_keys(self::getStatusesArray())],
+
+			['role', 'string', 'max' => 64],
 		];
 	}
 
@@ -85,6 +88,7 @@ class User extends ActiveRecord implements IdentityInterface
 			'email' => Module::t('module', 'USER_EMAIL'),
 			'status' => Module::t('module', 'USER_STATUS'),
 			'avatar' => Module::t('module', 'USER_AVATAR'),
+			'role' => Module::t('module', 'USER_ROLE'),
 		];
 	}
 

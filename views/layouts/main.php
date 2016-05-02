@@ -9,8 +9,17 @@ use yii\bootstrap\NavBar;
 use app\assets\AppAsset;
 use app\components\widgets\Alert;
 use yii\widgets\Breadcrumbs;
+use app\modules\admin\rbac\Rbac as AdminRbac;
 
 AppAsset::register($this);
+
+$dropdownMenuForUser = Yii::$app->user->can(AdminRbac::PERMISSION_ADMIN_PANEL) ?
+	[['label' => Yii::t('app', 'NAV_ADMIN'), 'url' => ['/admin/default/index']]]
+	: [];
+$dropdownMenuForUser[] = ['label' => Yii::t('app', 'NAV_PROFILE'),
+	'url' => ['/user/profile/index']];
+$dropdownMenuForUser[] = ['label' => Yii::t('app', 'NAV_LOGOUT'),
+	'url' => ['/user/default/logout'], 'linkOptions' => ['data-method' => 'post']];
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -42,24 +51,19 @@ AppAsset::register($this);
 			['label' => Yii::t('app', 'NAW_CONTACT'), 'url' => ['/main/contact/index']],
 
 			Yii::$app->user->isGuest ? [
-				'label' => Html::img('/images/menu/yii-icon.png',
-					['alt' => Yii::t('app', 'NAV_ICON_LOGIN'), 'width'=>'20']),
+				'label' => Html::img('/images/menu/yii-icon.png', ['width'=>'20']),
 				'items' => [
-					['label' => Yii::t('app', 'NAV_LOGIN'), 'url' => ['/user/default/login']],
-					['label' => Yii::t('app', 'NAV_SIGNUP'), 'url' => ['/user/default/signup']]
+					['label' => Yii::t('app', 'NAV_LOGIN'),
+						'url' => ['/user/default/login']],
+					['label' => Yii::t('app', 'NAV_SIGNUP'),
+						'url' => ['/user/default/signup']]
 				],
 				'encode' => false,
 			] : false,
 
 			!Yii::$app->user->isGuest ? [
-				'label' => Html::img('/images/menu/yii-icon.png',
-					['alt' => Yii::t('app', 'NAV_ICON_ADMIN'), 'width'=>'20']),
-				'items' => [
-					['label' => Yii::t('app', 'NAV_ADMIN'), 'url' => ['/admin/default/index']],
-					['label' => Yii::t('app', 'NAV_PROFILE'), 'url' => ['/user/profile/index']],
-					['label' => Yii::t('app', 'NAV_LOGOUT'), 'url' => ['/user/default/logout'],
-						'linkOptions' => ['data-method' => 'post']],
-				],
+				'label' => Html::img('/images/menu/yii-icon.png', [ 'width'=>'20']),
+				'items' => $dropdownMenuForUser,
 				'encode' => false,
 			] : false
 		]),
@@ -69,7 +73,8 @@ AppAsset::register($this);
 
 	<div class="container">
 		<?= Breadcrumbs::widget([
-			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+			'links' => isset($this->params['breadcrumbs'])
+				? $this->params['breadcrumbs'] : [],
 		]) ?>
 		<?= Alert::widget() ?>
 		<?= $content ?>
@@ -78,7 +83,9 @@ AppAsset::register($this);
 
 <footer class="footer">
 	<div class="container">
-		<p class="pull-left">&copy; <?=Yii::$app->params['authorBlog'].' '.date('Y') ?></p>
+		<p class="pull-left">
+			&copy; <?=Yii::$app->params['authorBlog'].' '.date('Y') ?>
+		</p>
 
 		<p class="pull-right"><?= Yii::powered() ?></p>
 	</div>

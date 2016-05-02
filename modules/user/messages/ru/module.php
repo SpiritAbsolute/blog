@@ -18,6 +18,7 @@ return [
 	'USER_VERIFY_CODE' => 'Код',
 	'USER_DATE_FROM' => 'Дата с',
 	'USER_DATE_TO' => 'Дата по',
+	'USER_ROLE' => 'Роль',
 
 	'TITLE_LOGIN' => 'Вход',
 	'TITLE_PASSWORD_CHANGE' => 'Смена пароля',

@@ -20,6 +20,9 @@ return [
 			'class' => 'yii\db\Connection',
 			'charset' => 'utf8',
 		],
+		'authManager' => [
+			'class' => 'app\components\rbac\AuthManager',
+		],
 		'urlManager' => [
 			'enablePrettyUrl' => true,
 			'showScriptName' => false,

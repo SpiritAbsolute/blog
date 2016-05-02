@@ -8,6 +8,8 @@ use app\components\grid\SetColumn;
 use app\components\grid\LinkColumn;
 use kartik\date\DatePicker;
 use app\modules\user\Module;
+use yii\helpers\ArrayHelper;
+use app\modules\user\widgets\backend\grid\RoleColumn;
 
 /* @var $this yii\web\View */
 /* @var $searchModel \app\modules\user\models\backend\search\UserSearch */
@@ -55,6 +57,13 @@ $this->params['breadcrumbs'][] = $this->title;
 					User::STATUS_WAIT => 'warning',
 					User::STATUS_BLOCKED => 'default',
 				],
+			],
+
+			[
+				'class' => RoleColumn::className(),
+				'filter' => ArrayHelper::map(
+					Yii::$app->authManager->getRoles(), 'name', 'description'),
+				'attribute' => 'role',
 			],
 
 			['class' => ActionColumn::className()],

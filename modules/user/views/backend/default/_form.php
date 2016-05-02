@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\modules\user\models\backend\User;
 use app\modules\user\Module;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\user\models\User */
@@ -23,6 +24,9 @@ use app\modules\user\Module;
 	<?= $form->field($model, 'newPasswordRepeat')->passwordInput(['maxlength' => true]) ?>
 
 	<?= $form->field($model, 'status')->dropDownList(User::getStatusesArray()) ?>
+
+	<?= $form->field($model, 'role')->dropDownList(
+		ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'description')) ?>
 
 	<div class="form-group">
 		<?= Html::submitButton($model->isNewRecord ?

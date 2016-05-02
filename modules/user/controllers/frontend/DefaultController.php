@@ -85,7 +85,7 @@ class DefaultController extends Controller
 
 	public function actionSignup()
 	{
-		$model = new SignupForm();
+		$model = new SignupForm($this->module->defaultRole);
 		if ($model->load(Yii::$app->request->post()))
 		{
 			if ($model->signup())
